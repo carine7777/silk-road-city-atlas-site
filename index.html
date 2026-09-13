@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#11253b">
+  <title>丝路城市志 · 撒马尔罕与布哈拉</title>
+  <link rel="stylesheet" href="style.css?v=bukhara-20260827-3">
+  <link rel="stylesheet" href="postcards.css?v=postcard-brand-4">
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true">
+    <symbol id="poi-gur" viewBox="0 0 16 16"><path d="M3 14h10v-2h-1V7H4v5H3zm2-7h6V5H5zM6 4h4L8 1z"/></symbol>
+    <symbol id="poi-registan" viewBox="0 0 16 16"><path d="M1 14h14v-2h-1V4h-2v8h-2V6H6v6H4V4H2v8H1zm6-2V8h2v4zM2 3h2V1H2zm10 0h2V1h-2z"/></symbol>
+    <symbol id="poi-bibi" viewBox="0 0 16 16"><path d="M2 14h12v-2h-1V7h-2v5H5V7H3v5H2zM5 6h6V4H5zm1-3h4L8 1zM1 7h2V3H1zm12 0h2V3h-2z"/></symbol>
+    <symbol id="poi-siyob" viewBox="0 0 16 16"><path d="M2 14h12V7H2zm2-5h3v3H4zm5 0h3v3H9zM1 6h14l-2-4H3zM4 2v4m4-4v4m4-4v4"/></symbol>
+    <symbol id="poi-shah" viewBox="0 0 16 16"><path d="M1 14h14v-2h-3V9H9v3H7V7H4v5H1zM4 6h3L5.5 3zm5 2h3l-1.5-3z"/></symbol>
+    <symbol id="poi-afrasiab" viewBox="0 0 16 16"><path d="M1 14h14v-2h-2V5h-3v2H7V3H3v9H1zm4-8h1v3H5zm6 2h1v3h-1z"/></symbol>
+    <symbol id="poi-observatory" viewBox="0 0 16 16"><path d="M2 13h12v2H2zm2-1a4 4 0 018-0zm3-2V5h2v5zM6 4h6V2H8v1H6z"/></symbol>
+    <symbol id="poi-hauz" viewBox="0 0 16 16"><path d="M1 11h14v3H1zm2-2h10L8 5zm2-5h6V2H5zM3 12h2m2 0h2m2 0h2"/></symbol>
+    <symbol id="poi-dome" viewBox="0 0 16 16"><path d="M1 14h14v-2h-1V8h-2v4H9V8H7v4H4V8H2v4H1zm2-7h10A5 5 0 003 7z"/></symbol>
+    <symbol id="poi-madrasa" viewBox="0 0 16 16"><path d="M1 14h14v-2h-2V5H9v7H7V5H3v7H1zM4 4h3L5.5 1zm5 0h3l-1.5-3z"/></symbol>
+    <symbol id="poi-kalyan" viewBox="0 0 16 16"><path d="M1 14h9v-2H9V8H3v4H1zm3-7h4L6 4zm8 7h3v-2h-1l-.5-8h-1L12 12h-1zM12 3h3V1h-3z"/></symbol>
+    <symbol id="poi-ark" viewBox="0 0 16 16"><path d="M1 14h14v-2h-1V5h-3V3H9v2H7V3H5v2H2v7H1zm5-2V8h4v4z"/></symbol>
+    <symbol id="poi-spring" viewBox="0 0 16 16"><path d="M2 14h12v-2H2zm2-3h8V8H4zm1-4h6A3 3 0 005 7zm3-2V1l3 3z"/></symbol>
+    <symbol id="poi-samanid" viewBox="0 0 16 16"><path d="M2 14h12v-2h-1V6H3v6H2zm3-3V8h2v3zm4 0V8h2v3zM4 5h8L8 1z"/></symbol>
+  </svg>
+  <div id="audio-caption" class="audio-caption" aria-live="polite"><b>商旅声景</b><span>点击地图后开启原创声景</span></div>
+  <main id="app">
+    <section id="world" class="screen is-active" aria-label="丝绸之路互动地图">
+      <header class="topbar">
+        <div class="brand" aria-label="鸭群专用丝绸之路城市志">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" focusable="false">
+              <rect class="logo-tile" x="1" y="1" width="46" height="46"/>
+              <path class="logo-dome" d="M16 17c1-7 5-11 8-11s7 4 8 11z"/>
+              <path class="logo-portal" d="M15 40V18h18v22h-5V27c0-3-2-6-4-6s-4 3-4 6v13z"/>
+              <path class="logo-minaret" d="M8 40V16h5v24zm27 0V16h5v24z"/>
+              <path class="logo-mosaic" d="M4 5h4v4H4zm36 0h4v4h-4zM5 11h3v3H5zm35 0h3v3h-3zM4 42h7v2H4zm33 0h7v2h-7z"/>
+              <path class="logo-door" d="M22 40V29c0-2 1-4 2-4s2 2 2 4v11z"/>
+            </svg>
+          </span>
+          <span class="brand-name"><b>鸭群专用</b><small>丝绸之路城市志</small></span>
+        </div>
+        <nav class="map-modes" aria-label="地图图层">
+          <button class="mode is-on" type="button" data-mode="time">时间</button>
+          <button class="mode" type="button" data-mode="trade">贸易</button>
+          <button class="mode" type="button" data-mode="ideas">思想</button>
+        </nav>
+      </header>
+
+      <div class="map-stage" id="map-stage">
+        <svg class="world-map" viewBox="0 0 1200 620" role="img" aria-label="从长安到君士坦丁堡的丝绸之路地图">
+          <defs>
+            <pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="2" height="2" fill="#8ca17f" opacity=".18"/></pattern>
+            <filter id="pixelglow"><feFlood flood-color="#f6d365"/><feComposite in2="SourceGraphic" operator="in"/><feGaussianBlur stdDeviation="5"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <image class="relief" href="assets/silk-road-pixel-relief-v2.webp" x="0" y="0" width="1200" height="620" preserveAspectRatio="xMidYMid slice"/>
+          <path class="land" d="M54 195l46-78 101-40 87 17 75-34 87 55 96-36 76 51 104-21 67 53 92-24 73 76-22 91 68 76-53 75-142-3-82 57-101-21-105 39-115-54-101 22-86-61-106 4-70-79 35-75-44-86z"/>
+          <path class="texture" d="M54 195l46-78 101-40 87 17 75-34 87 55 96-36 76 51 104-21 67 53 92-24 73 76-22 91 68 76-53 75-142-3-82 57-101-21-105 39-115-54-101 22-86-61-106 4-70-79 35-75-44-86z"/>
+          <path class="route-shadow" d="M1055 294C930 255 833 326 713 293S503 235 400 299 218 365 115 326S76 312 47 305"/>
+          <path class="route" d="M1055 294C930 255 833 326 713 293S503 235 400 299 218 365 115 326S76 312 47 305"/>
+          <g class="mountains"><path d="M730 206l20-30 20 30m-9 0 25-38 28 38M843 261l21-33 22 33"/><path d="M330 345l18-28 20 28m-8 0 25-40 27 40"/></g>
+          <g class="city passive" transform="translate(1055 294)"><circle r="7"/><text y="-28"><tspan x="0">XI'AN</tspan><tspan x="0" dy="12">西安</tspan></text></g>
+          <g class="city passive" transform="translate(932 278)"><circle r="5"/><text y="25"><tspan x="0">DUNHUANG</tspan><tspan x="0" dy="12">敦煌</tspan></text></g>
+          <g class="city primary coming" tabindex="0" role="button" data-city="TURPAN · 吐鲁番" transform="translate(885 293)"><circle r="7"/><text y="-28"><tspan x="0">TURPAN</tspan><tspan x="0" dy="12">吐鲁番</tspan></text></g>
+          <g class="city primary coming" tabindex="0" role="button" data-city="KASHGAR · 喀什" transform="translate(821 306)"><circle r="7"/><text y="26"><tspan x="0">KASHGAR</tspan><tspan x="0" dy="12">喀什</tspan></text></g>
+          <g id="bukhara-node" class="city uzbek primary bukhara" tabindex="0" role="button" aria-label="进入布哈拉" data-city-id="bukhara" transform="translate(568 272)"><circle class="pulse" r="14"/><circle r="7"/><text y="-29"><tspan x="0">BUKHARA</tspan><tspan x="0" dy="12">布哈拉</tspan></text></g>
+          <g class="city uzbek primary coming khiva" tabindex="0" role="button" data-city="KHIVA · 希瓦" transform="translate(520 283)"><circle r="7"/><text y="25"><tspan x="0">KHIVA</tspan><tspan x="0" dy="12">希瓦</tspan></text></g>
+          <g class="city passive" transform="translate(408 296)"><circle r="5"/><text y="-28"><tspan x="0">MERV</tspan><tspan x="0" dy="12">木鹿</tspan></text></g>
+          <g class="city passive" transform="translate(313 331)"><circle r="5"/><text y="25"><tspan x="0">TEHRAN</tspan><tspan x="0" dy="12">德黑兰</tspan></text></g>
+          <g class="city passive" transform="translate(217 355)"><circle r="5"/><text y="-28"><tspan x="0">BAGHDAD</tspan><tspan x="0" dy="12">巴格达</tspan></text></g>
+          <g class="city passive" transform="translate(115 326)"><circle r="7"/><text y="25"><tspan x="0">CONSTANTINOPLE</tspan><tspan x="0" dy="12">君士坦丁堡</tspan></text></g>
+          <g class="city passive" transform="translate(47 305)"><circle r="6"/><text y="-28"><tspan x="0">ROME</tspan><tspan x="0" dy="12">罗马</tspan></text></g>
+          <g id="samarkand-node" class="city uzbek primary samarkand" tabindex="0" role="button" aria-label="进入撒马尔罕" data-city-id="samarkand" transform="translate(632 289)">
+            <circle class="pulse" r="14"/><circle r="7"/><text y="-29"><tspan x="0">SAMARKAND</tspan><tspan x="0" dy="12">撒马尔罕</tspan></text>
+          </g>
+          <g class="compass" transform="translate(1082 500)"><circle r="38"/><path d="M0-28l8 28-8 28-8-28z"/><text y="-47">N</text></g>
+        </svg>
+        <div class="atlas-tools" aria-label="丝路地图缩放">
+          <button type="button" data-action="world-zoom-in" aria-label="放大丝路地图">+</button>
+          <button type="button" data-action="world-zoom-out" aria-label="缩小丝路地图">−</button>
+          <button type="button" data-action="world-reset" aria-label="显示完整丝绸之路">全图</button>
+        </div>
+        <button class="skip" type="button" data-action="skip">跳过开场 ↗</button>
+        <p class="map-help">拖拽探索 · 选择发光城市</p>
+        <div class="timeline" aria-label="历史时期">
+          <span>公元前 500 年</span>
+          <div class="eras">
+            <button data-era="ANCIENT">古代</button><button data-era="HAN">汉</button><button data-era="TANG">唐</button><button data-era="ISLAMIC">伊斯兰</button><button data-era="MONGOL">蒙古</button><button class="is-active" data-era="TIMURID">帖木儿</button><button data-era="MODERN">近现代</button>
+          </div>
+          <span>公元 1900 年</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="city-map" class="screen two-days" aria-labelledby="city-map-title">
+      <header class="citybar mapbar">
+        <button class="pixel-button" type="button" data-action="map">← 丝路地图</button>
+        <div><span>城市路线规划</span><strong id="city-map-title">撒马尔罕 · SAMARKAND</strong></div>
+      </header>
+      <div class="local-map">
+        <div class="map-canvas" id="map-canvas">
+          <img src="assets/samarkand-pixel-map.webp" alt="撒马尔罕城市俯视像素地图，显示街区、绿地、河道和主要历史建筑">
+          <svg class="local-routes" viewBox="0 0 1200 675" aria-hidden="true">
+            <path class="route-line day-one" d="M228 472 C305 455 390 438 502 396 S650 348 700 304 S732 235 790 200 S855 197 913 229"/>
+            <path class="route-line day-two" d="M913 229 C977 182 994 128 1030 88 S1089 80 1124 69"/>
+          </svg>
+          <div class="route-markers" aria-label="路线景点与附近景点">
+            <button class="map-pin pin-gur" data-landmark="gur" data-scene="gur"><svg><use href="#poi-gur"/></svg><i>1</i><span><b>GUR-E-AMIR · 古尔·埃米尔陵墓</b><small>帖木儿王朝陵墓与蓝色穹顶</small><em>进入场景 →</em></span></button>
+            <button class="map-pin pin-registan" data-landmark="registan" data-scene="plaza"><svg><use href="#poi-registan"/></svg><i>2</i><span><b>REGISTAN · 雷吉斯坦广场</b><small>城市公共中心与三座经学院</small><em>进入场景 →</em></span></button>
+            <button class="map-pin pin-bibi" data-landmark="bibi" data-scene="bibi"><svg><use href="#poi-bibi"/></svg><i>3</i><span><b>BIBI-KHANYM · 比比哈努姆清真寺</b><small>帖木儿时代的宏大清真寺</small><em>进入场景 →</em></span></button>
+            <button class="map-pin pin-siyob" data-landmark="siyob" data-scene="bazaar"><svg><use href="#poi-siyob"/></svg><i>4</i><span><b>SIYOB BAZAAR · 锡亚布市场</b><small>连接纪念建筑与日常贸易</small><em>进入场景 →</em></span></button>
+            <button class="map-pin pin-shah" data-landmark="shah" data-scene="shah"><svg><use href="#poi-shah"/></svg><i>5</i><span><b>SHAH-I-ZINDA · 沙赫静达陵墓群</b><small>沿坡地展开的蓝色陵墓长廊</small><em>进入场景 →</em></span></button>
+            <button class="map-pin day-two pin-afrasiab" data-landmark="afrasiab" data-scene="afrasiab"><svg><use href="#poi-afrasiab"/></svg><i>6</i><span><b>AFRASIAB · 阿弗拉西亚卜遗址</b><small>撒马尔罕最早的城市层与粟特壁画</small><em>第 2 天 · 进入场景 →</em></span></button>
+            <button class="map-pin day-two pin-observatory" data-landmark="observatory" data-scene="observatory"><svg><use href="#poi-observatory"/></svg><i>7</i><span><b>ULUGH BEG OBSERVATORY · 兀鲁伯天文台</b><small>天文学与知识交流的地标</small><em>第 2 天 · 进入场景 →</em></span></button>
+            <button class="map-pin nearby pin-rukhabad" data-landmark="rukhabad"><svg><use href="#poi-gur"/></svg><span><b>RUKHABAD MAUSOLEUM · 鲁哈巴德陵墓</b><small>14 世纪陵墓，位于古尔·埃米尔与雷吉斯坦之间。</small><em>附近景点 · 查看介绍</em></span></button>
+            <button class="map-pin nearby pin-chorsu" data-landmark="chorsu"><svg><use href="#poi-siyob"/></svg><span><b>CHORSU · 四顶穹顶建筑</b><small>古商路交汇处的穹顶商业建筑，今天用作展览空间。</small><em>附近景点 · 查看介绍</em></span></button>
+            <button class="map-pin nearby pin-khizr" data-landmark="khizr"><svg><use href="#poi-bibi"/></svg><span><b>HAZRAT KHIZR MOSQUE · 哈兹拉特·希兹尔清真寺</b><small>俯瞰阿弗拉西亚卜与锡亚布市场的高处地标。</small><em>附近景点 · 查看介绍</em></span></button>
+          </div>
+        </div>
+        <aside class="route-planner" id="route-planner">
+          <div class="route-title planner-handle"><span>推荐路线</span><strong id="route-days">2 天 · 7 个景点</strong><button type="button" data-action="toggle-planner" aria-label="最小化路线规划板" aria-expanded="true">−</button></div>
+          <div class="day-switch" role="group" aria-label="游玩天数">
+            <button data-days="1">1 天</button><button class="is-active" data-days="2">2 天</button>
+          </div>
+          <p id="route-summary">节奏更从容。第一天探索古城核心，第二天串联阿弗拉西亚卜遗址与兀鲁伯天文台。</p>
+          <ol class="route-list">
+            <li data-landmark="gur" data-scene="gur"><i>1</i><svg><use href="#poi-gur"/></svg><span><b>Gur-e-Amir · 古尔·埃米尔陵墓</b><small>开始 · 09:00 · 进入场景</small></span></li>
+            <li data-landmark="registan" data-scene="plaza"><i>2</i><svg><use href="#poi-registan"/></svg><span><b>Registan · 雷吉斯坦广场</b><small>10:00 · 进入场景</small></span></li>
+            <li data-landmark="bibi" data-scene="bibi"><i>3</i><svg><use href="#poi-bibi"/></svg><span><b>Bibi-Khanym · 比比哈努姆清真寺</b><small>12:30 · 进入场景</small></span></li>
+            <li data-landmark="siyob" data-scene="bazaar"><i>4</i><svg><use href="#poi-siyob"/></svg><span><b>Siyob Bazaar · 锡亚布市场</b><small>午餐 · 进入场景</small></span></li>
+            <li data-landmark="shah" data-scene="shah"><i>5</i><svg><use href="#poi-shah"/></svg><span><b>Shah-i-Zinda · 沙赫静达陵墓群</b><small>结束 · 16:00 · 进入场景</small></span></li>
+            <li class="day-two" data-landmark="afrasiab" data-scene="afrasiab"><i>6</i><svg><use href="#poi-afrasiab"/></svg><span><b>Afrasiab · 阿弗拉西亚卜遗址</b><small>第 2 天 · 开始 · 进入场景</small></span></li>
+            <li class="day-two" data-landmark="observatory" data-scene="observatory"><i>7</i><svg><use href="#poi-observatory"/></svg><span><b>Ulugh Beg Observatory · 兀鲁伯天文台</b><small>第 2 天 · 结束 · 进入场景</small></span></li>
+          </ol>
+          <div class="route-legend"><span><i></i>第 1 天</span><span class="day-two"><i></i>第 2 天</span></div>
+        </aside>
+        <div class="map-tools"><b aria-hidden="true">N</b><button type="button" data-action="zoom-in" aria-label="放大城市地图">+</button><button type="button" data-action="zoom-out" aria-label="缩小城市地图">−</button></div>
+        <div class="map-scale">500 M</div>
+      </div>
+    </section>
+
+    <section id="city" class="screen" aria-labelledby="city-title">
+      <header class="citybar">
+        <button class="pixel-button" type="button" data-action="route-map">← 城市地图</button>
+        <div><span>正在探索</span><strong id="city-title">撒马尔罕</strong></div>
+        <nav class="citybar-actions" aria-label="场景工具">
+          <button class="treasure-button" type="button" data-action="about">为什么在这里？</button>
+        </nav>
+      </header>
+      <div class="city-scene" id="game-scene">
+        <img id="scene-art" class="scene-art" src="assets/samarkand-pixel-scene.webp" alt="夕阳下的撒马尔罕雷吉斯坦广场像素画，商人、骆驼与学者穿行其中">
+        <div id="scene-hotspots"></div>
+        <aside class="city-dossier">
+          <span id="scene-step">场景 01 · 雷吉斯坦广场</span><h2 id="scene-title">雷吉斯坦广场</h2><p id="scene-subtitle">撒马尔罕 · 乌兹别克斯坦</p>
+          <dl id="scene-details"><div><dt>地区</dt><dd>粟特</dd></div><div><dt>功能</dt><dd>城市中心 · 学术</dd></div><div><dt>时期</dt><dd>15—17 世纪</dd></div></dl>
+          <p class="scene-hint"><b>探索城市</b>寻找发光的故事与线索。</p>
+        </aside>
+        <nav id="panorama-nav" class="panorama-nav" aria-label="古尔·埃米尔全景方向" hidden>
+          <button type="button" data-panorama="west"><b>W</b>←<span>西庭院</span></button>
+          <button type="button" data-panorama="north" class="is-active"><b>N</b>↑<span>陵墓正门</span></button>
+          <button type="button" data-panorama="east"><b>E</b>→<span>东庭院</span></button>
+          <button type="button" data-panorama="south"><b>S</b>↓<span>城市来路</span></button>
+        </nav>
+        <nav class="scene-nav" aria-label="场景方向">
+          <button data-move="west" aria-label="向西走"><b>W</b>←<span>—</span></button>
+          <button data-move="north" aria-label="向北走"><b>N</b>↑<span>—</span></button>
+          <button data-move="east" aria-label="向东走"><b>E</b>→<span>—</span></button>
+          <button data-move="south" aria-label="向南走"><b>S</b>↓<span>—</span></button>
+        </nav>
+      </div>
+      <footer class="statusbar"><span>第 1 天 · 文明交汇的十字路口</span><span>线索 <b id="clues">0 / 1</b></span></footer>
+    </section>
+  </main>
+
+  <dialog id="modal">
+    <div id="modal-content"></div>
+  </dialog>
+
+  <template id="bukhara-map-template">
+    <img src="assets/bukhara-pixel-map.webp" alt="布哈拉城市俯视像素地图，显示阿尔克城堡、波伊卡扬高塔、穹顶市场、经学院与拉比哈乌兹水池">
+    <svg class="local-routes" viewBox="0 0 1200 675" aria-hidden="true">
+      <path class="route-line day-one" d="M930 500 C830 470 730 430 612 390 S770 305 885 278 S760 182 695 135"/>
+      <path class="route-line day-two" d="M205 304 C168 232 126 148 150 92 S298 92 405 116"/>
+    </svg>
+    <div class="route-markers" aria-label="布哈拉路线景点与附近景点">
+      <button class="map-pin pin-buk-hauz" data-landmark="bukhara_hauz" data-scene="bukhara_hauz"><svg><use href="#poi-hauz"/></svg><i>1</i><span><b>LYABI-HAUZ · 拉比哈乌兹建筑群</b><small>水池、树荫与城市公共生活</small><em>进入场景 →</em></span></button>
+      <button class="map-pin pin-buk-domes" data-landmark="bukhara_domes" data-scene="bukhara_domes"><svg><use href="#poi-dome"/></svg><i>2</i><span><b>TRADING DOMES · 布哈拉穹顶市场</b><small>珠宝、帽子、布匹与钱币兑换</small><em>进入场景 →</em></span></button>
+      <button class="map-pin pin-buk-madrasas" data-landmark="bukhara_madrasas" data-scene="bukhara_madrasas"><svg><use href="#poi-madrasa"/></svg><i>3</i><span><b>KOSH MADRASAS · 双经学院</b><small>两个世纪隔街展开的建筑对话</small><em>进入场景 →</em></span></button>
+      <button class="map-pin pin-buk-kalyan" data-landmark="bukhara_kalyan" data-scene="bukhara_kalyan"><svg><use href="#poi-kalyan"/></svg><i>4</i><span><b>PO-I-KALYAN · 波伊卡扬建筑群</b><small>宣礼塔、清真寺与经学院的天际线</small><em>进入场景 →</em></span></button>
+      <button class="map-pin day-two pin-buk-ark" data-landmark="bukhara_ark" data-scene="bukhara_ark"><svg><use href="#poi-ark"/></svg><i>5</i><span><b>ARK OF BUKHARA · 布哈拉阿尔克城堡</b><small>高台上的宫殿、政务与城市权力</small><em>第 2 天 · 进入场景 →</em></span></button>
+      <button class="map-pin day-two pin-buk-ayub" data-landmark="bukhara_ayub" data-scene="bukhara_ayub"><svg><use href="#poi-spring"/></svg><i>6</i><span><b>CHASHMA-AYUB · 查什马阿尤布陵墓</b><small>约伯之泉与绿洲城市的水</small><em>第 2 天 · 进入场景 →</em></span></button>
+      <button class="map-pin day-two pin-buk-samanid" data-landmark="bukhara_samanid" data-scene="bukhara_samanid"><svg><use href="#poi-samanid"/></svg><i>7</i><span><b>SAMANID MAUSOLEUM · 萨曼王陵</b><small>用烧砖、比例与日光完成的杰作</small><em>第 2 天 · 进入场景 →</em></span></button>
+      <button class="map-pin nearby pin-buk-magoki" data-landmark="bukhara_magoki"><svg><use href="#poi-madrasa"/></svg><span><b>MAGOKI ATTORI · 马戈基阿塔里清真寺</b><small>低于街面的古老建筑与多重城市记忆。</small><em>附近景点 · 查看介绍</em></span></button>
+      <button class="map-pin nearby pin-buk-bolo" data-landmark="bukhara_bolo"><svg><use href="#poi-hauz"/></svg><span><b>BOLO HAUZ · 博洛哈乌兹清真寺</b><small>木柱与水中倒影构成的“四十柱”。</small><em>附近景点 · 查看介绍</em></span></button>
+      <button class="map-pin nearby pin-buk-chor" data-landmark="bukhara_chor"><svg><use href="#poi-kalyan"/></svg><span><b>CHOR MINOR · 楚尔小宣礼塔</b><small>商人赞助、四座小塔与较晚的布哈拉。</small><em>附近景点 · 查看介绍</em></span></button>
+    </div>
+  </template>
+
+  <template id="bukhara-planner-template">
+    <div class="route-title planner-handle"><span>推荐路线</span><strong id="route-days">2 天 · 7 个景点</strong><button type="button" data-action="toggle-planner" aria-label="最小化路线规划板" aria-expanded="true">−</button></div>
+    <div class="day-switch" role="group" aria-label="游玩天数"><button data-days="1">1 天</button><button class="is-active" data-days="2">2 天</button></div>
+    <p id="route-summary">第一天从水池穿过市场、经学院与高塔；第二天向西串联城堡、圣泉与萨曼王陵。</p>
+    <ol class="route-list">
+      <li data-landmark="bukhara_hauz" data-scene="bukhara_hauz"><i>1</i><svg><use href="#poi-hauz"/></svg><span><b>Lyabi-Hauz · 拉比哈乌兹</b><small>第 1 天 · 09:00 · 进入场景</small></span></li>
+      <li data-landmark="bukhara_domes" data-scene="bukhara_domes"><i>2</i><svg><use href="#poi-dome"/></svg><span><b>Trading Domes · 布哈拉穹顶市场</b><small>10:15 · 进入场景</small></span></li>
+      <li data-landmark="bukhara_madrasas" data-scene="bukhara_madrasas"><i>3</i><svg><use href="#poi-madrasa"/></svg><span><b>Kosh Madrasas · 双经学院</b><small>11:30 · 进入场景</small></span></li>
+      <li data-landmark="bukhara_kalyan" data-scene="bukhara_kalyan"><i>4</i><svg><use href="#poi-kalyan"/></svg><span><b>Po-i-Kalyan · 波伊卡扬建筑群</b><small>14:30 · 进入场景</small></span></li>
+      <li class="day-two" data-landmark="bukhara_ark" data-scene="bukhara_ark"><i>5</i><svg><use href="#poi-ark"/></svg><span><b>Ark of Bukhara · 阿尔克城堡</b><small>第 2 天 · 09:00 · 进入场景</small></span></li>
+      <li class="day-two" data-landmark="bukhara_ayub" data-scene="bukhara_ayub"><i>6</i><svg><use href="#poi-spring"/></svg><span><b>Chashma-Ayub · 查什马阿尤布</b><small>11:00 · 进入场景</small></span></li>
+      <li class="day-two" data-landmark="bukhara_samanid" data-scene="bukhara_samanid"><i>7</i><svg><use href="#poi-samanid"/></svg><span><b>Samanid Mausoleum · 萨曼王陵</b><small>14:00 · 进入场景</small></span></li>
+    </ol>
+    <div class="route-legend"><span><i></i>第 1 天</span><span class="day-two"><i></i>第 2 天</span></div>
+  </template>
+  <script src="app.js?v=registan-1"></script>
+  <script src="postcards.js?v=postcard-brand-4"></script>
+</body>
+</html>
