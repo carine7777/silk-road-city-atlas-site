@@ -50,7 +50,7 @@
     }catch{}
     history.replaceState(null,'',location.pathname+location.search+`#${quest.slug}-quest`);
   }
-  function save(){try{localStorage.setItem(quest.key,JSON.stringify(state));}catch{storageOK=false;} updateScene(currentScene);if(account){clearTimeout(syncTimer);syncTimer=setTimeout(sync,600);}}
+  function save(){try{localStorage.setItem(quest.key,JSON.stringify(state));}catch{storageOK=false;}if(currentScene===quest.scene)updateScene(currentScene);if(account){clearTimeout(syncTimer);syncTimer=setTimeout(sync,600);}}
   async function sync(){try{const response=await fetch('/api/progress',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(state)});if(!response.ok)throw Error();}catch{if(dialog.open)notice('云端暂未保存，进度仍保留在本机。');}}
   const dialog = document.createElement('dialog');
   dialog.id='postcard-dialog'; dialog.setAttribute('aria-labelledby','postcard-heading'); document.body.append(dialog);
@@ -362,7 +362,7 @@
       correspondence(c,d);
       paper(c,66,660,948,644);
       // Quest cards reveal thirds; the finished postcard restores the complete selfie.
-      if(d.crop==null)c.drawImage(image,82,676,916,610.67);
+      if(d.crop==null)cover(c,image,82,676,916,610.67);
       else{const sw=image.naturalWidth/3;c.drawImage(image,sw*d.crop,0,sw,image.naturalHeight,82,676,916,610.67);}
       if(personal)drawPortraits(c,assets,design,82,676,916,610.67);
       if(filePreview){buttons[0].textContent='请打开本地网页后下载';return;}
