@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#11253b">
   <title>丝路城市志 · 撒马尔罕与布哈拉</title>
-  <link rel="stylesheet" href="style.css?v=ios-gesture-1">
+  <link rel="stylesheet" href="style.css?v=scene-drag-1">
   <link rel="stylesheet" href="postcards.css?v=ios-gesture-1">
 </head>
 <body>
@@ -150,8 +150,10 @@
         </nav>
       </header>
       <div class="city-scene" id="game-scene">
-        <img id="scene-art" class="scene-art" src="assets/samarkand-pixel-scene.webp" alt="夕阳下的撒马尔罕雷吉斯坦广场像素画，商人、骆驼与学者穿行其中">
-        <div id="scene-hotspots"></div>
+        <div id="scene-canvas" class="scene-canvas">
+          <img id="scene-art" class="scene-art" src="assets/samarkand-pixel-scene.webp" alt="夕阳下的撒马尔罕雷吉斯坦广场像素画，商人、骆驼与学者穿行其中">
+          <div id="scene-hotspots"></div>
+        </div>
         <aside class="city-dossier">
           <span id="scene-step">场景 01 · 雷吉斯坦广场</span><h2 id="scene-title">雷吉斯坦广场</h2><p id="scene-subtitle">撒马尔罕 · 乌兹别克斯坦</p>
           <dl id="scene-details"><div><dt>地区</dt><dd>粟特</dd></div><div><dt>功能</dt><dd>城市中心 · 学术</dd></div><div><dt>时期</dt><dd>15—17 世纪</dd></div></dl>
@@ -213,7 +215,7 @@
     </ol>
     <div class="route-legend"><span><i></i>第 1 天</span><span class="day-two"><i></i>第 2 天</span></div>
   </template>
-  <script src="app.js?v=registan-1"></script>
+  <script src="app.js?v=scene-drag-1"></script>
   <script src="postcards.js?v=postcard-brand-4"></script>
 </body>
 </html>

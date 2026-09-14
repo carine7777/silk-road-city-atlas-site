@@ -5,6 +5,7 @@ const cityMinZoom = matchMedia('(max-width:700px)').matches ? 1 : .69;
 let cityZoom = cityMinZoom;
 let cityPanX = 0, cityPanY = 0;
 let worldZoom = 1, worldPanX = 0, worldPanY = 0;
+let scenePanX = 0, scenePanY = 0;
 let soundEnabled = true, narrationEnabled = false, audioContext, masterGain, ambientTimer, marketTimer, hoverNarrationTimer;
 let lastNarration = '';
 let activeStoryKey = null;
@@ -424,6 +425,15 @@ function makeCityMapDraggable(){
   map.addEventListener('pointerup',stop);map.addEventListener('pointercancel',stop);
 }
 
+function renderSceneTransform(){const canvas=$('#scene-canvas');canvas.style.setProperty('--scene-x',`${scenePanX}px`);canvas.style.setProperty('--scene-y',`${scenePanY}px`);}
+function makeSceneDraggable(){
+  const scene=$('#game-scene');let drag;
+  scene.addEventListener('pointerdown',e=>{if(e.target.closest('button,aside,nav'))return;drag={x:e.clientX,y:e.clientY,panX:scenePanX,panY:scenePanY,id:e.pointerId};scene.setPointerCapture(e.pointerId);scene.classList.add('is-dragging');});
+  scene.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const limitX=scene.clientWidth*.06,limitY=scene.clientHeight*.06;scenePanX=Math.max(-limitX,Math.min(limitX,drag.panX+e.clientX-drag.x));scenePanY=Math.max(-limitY,Math.min(limitY,drag.panY+e.clientY-drag.y));renderSceneTransform();});
+  const stop=e=>{if(!drag||e.pointerId!==drag.id)return;drag=null;scene.classList.remove('is-dragging');};
+  scene.addEventListener('pointerup',stop);scene.addEventListener('pointercancel',stop);
+}
+
 function makePlannerDraggable(){
   const planner=$('#route-planner'),handle=planner.querySelector('.planner-handle'),map=$('.local-map');let drag;
   handle.addEventListener('pointerdown',e=>{if(e.target.closest('button')||innerWidth<=700)return;const box=planner.getBoundingClientRect(),parent=map.getBoundingClientRect();drag={x:e.clientX,y:e.clientY,left:box.left-parent.left,top:box.top-parent.top,id:e.pointerId};handle.setPointerCapture(e.pointerId);planner.classList.add('is-dragging');});
@@ -434,7 +444,7 @@ function makePlannerDraggable(){
 
 function renderScene(name,{audio=true}={}){
   const scene = scenes[name]; if(!scene) return;
-  currentScene = name;
+  currentScene = name;scenePanX=0;scenePanY=0;renderSceneTransform();
   const sceneCity=scene.city||activeCity,config=cityConfigs[sceneCity]||cityConfigs.samarkand;
   const sceneArt=$('#scene-art'),panoramaNav=$('#panorama-nav'),isPanorama=name==='gur';
   sceneArt.src=scene.src;sceneArt.alt=scene.alt;sceneArt.classList.toggle('is-panorama',isPanorama);$('#game-scene').classList.toggle('has-panorama',isPanorama);panoramaNav.hidden=!isPanorama;
@@ -484,6 +494,7 @@ const closeModal=()=>{modal.close();activeStoryKey=null;window.speechSynthesis?.
 modal.addEventListener('click', e => {if(e.target===modal)closeModal();});
 modal.addEventListener('cancel', closeModal);
 makeCityMapDraggable();
+makeSceneDraggable();
 makePlannerDraggable();
 makeWorldMapDraggable();
 setupLandmarkPreviews();

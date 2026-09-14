@@ -176,8 +176,9 @@ dialog:has(.duck-story){width:min(820px,calc(100% - 28px));max-height:calc(100dv
 
 /* iOS gestures: native page pinch/pan everywhere; maps keep one-finger dragging. */
 html,body,#app,.screen{touch-action:pan-x pan-y pinch-zoom}
-.map-stage,.local-map{touch-action:pinch-zoom}
+.map-stage,.local-map,.city-scene{touch-action:pinch-zoom}
 .timeline,.route-planner,.route-list,dialog{touch-action:pan-x pan-y pinch-zoom;-webkit-overflow-scrolling:touch}
+.city-scene{cursor:grab}.city-scene.is-dragging{cursor:grabbing}.scene-canvas{position:absolute;inset:-6%;transform:translate(var(--scene-x,0px),var(--scene-y,0px));will-change:transform}.city-scene.is-dragging .scene-canvas{transition:none}
 @media (max-width:1023px) and (orientation:portrait){
   .world-map,.map-stage.focused .world-map{left:50%!important;width:auto;height:100%;min-width:max(1080px,calc(194dvh - 148px));transform:translate(calc(-50% + var(--world-x)),var(--world-y)) scale(var(--world-zoom));transform-origin:55% 50%}
 }
