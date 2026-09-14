@@ -19,12 +19,12 @@
       {id:'bibi_stand',name:'找到巨书的位置',hint:'庭院中央，有一座曾托举巨幅古兰经的石架。',question:'庭院中央的石质书架原来用来托举什么？',answers:['商人的秤','巨幅古兰经'],correct:1,reply:'不是普通书架，是一座给巨书准备的舞台。线索收好。'},
       {id:'bibi_kiss',name:'分清传说与史实',hint:'去画面右侧，听听王后、建筑师与一个吻的传说。',question:'“王后与建筑师之吻”应该怎样理解？',answers:['后世地方传说','可靠的施工档案'],correct:0,reply:'浪漫故事可以记住，但不能冒充施工记录。胖鸭批准入册。'}
     ],designs:[
-      {title:'门廊来信',subtitle:'把宏伟装进一封信。',color:'#176a78',image:'assets/bibi-khanym-postcards.png',blessing:'愿你拥有抬头看世界的勇气，也有走进宏大之后的从容。'},
-      {title:'庭院来信',subtitle:'巨书与旅人在此相遇。',color:'#9a592f',image:'assets/bibi-khanym-postcards.png',blessing:'愿每一次阅读，都为你打开一座比想象更大的庭院。'},
-      {title:'传说来信',subtitle:'夕阳替故事保留余温。',color:'#70435e',image:'assets/bibi-khanym-postcards.png',blessing:'愿真实给你方向，传说给旅途留下一点温柔。'}
+      {title:'门廊来信',subtitle:'把宏伟装进一封信。',color:'#176a78',image:'assets/bibi-khanym-postcard-portal.jpg',blessing:'愿你拥有抬头看世界的勇气，也有走进宏大之后的从容。'},
+      {title:'庭院来信',subtitle:'巨书与旅人在此相遇。',color:'#9a592f',image:'assets/bibi-khanym-postcard-courtyard.jpg',blessing:'愿每一次阅读，都为你打开一座比想象更大的庭院。'},
+      {title:'传说来信',subtitle:'夕阳替故事保留余温。',color:'#70435e',image:'assets/bibi-khanym-postcard-sunset.jpg',blessing:'愿真实给你方向，传说给旅途留下一点温柔。'}
     ]}
   };
-  const makeState=q=>({started:false,found:[],design:0,to:'亲爱的朋友',from:'一位丝路旅人',message:q.designs[0].blessing});
+  const makeState=q=>({started:false,found:[],design:0,to:'亲爱的朋友',from:'丝路上的胖鸭',message:q.designs[0].blessing});
   const states=Object.fromEntries(Object.entries(quests).map(([id,q])=>[id,makeState(q)]));
   let questId='registan',quest=quests[questId],state=states[questId],tasks=quest.tasks,designs=quest.designs,images=[],scenicBackdrop=new Image();
   let storageOK = true, preparedFile = null, drawing = 0;
@@ -33,7 +33,7 @@
   let portraits=[],processing=false,segmenterPromise=null,faceDetectorPromise=null,photoMode='original',photoStatus='';
   const filePreview=location.protocol==='file:';
   const mark = i => `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">${['<path d="M5 5h22v22H5zM16 7l9 9-9 9-9-9zM13 13h6v6h-6z"/>','<path d="M3 7h26v18H3zM3 8l13 10L29 8M3 25l9-10m17 10L20 15"/>','<path d="M12 9h8v3h3v8h-3v3h-8v-3H9v-8h3zM16 1v5m0 20v5M1 16h5m20 0h5M5 5l4 4m14 14 4 4M5 27l4-4M23 9l4-4"/>'][i]}</svg>`;
-  try {for(const [id,q] of Object.entries(quests)){const saved=JSON.parse(localStorage.getItem(q.key)||'null'),target=states[id];if(!saved||typeof saved!=='object')continue;target.started=saved.started===true;target.found=[...new Set(Array.isArray(saved.found)?saved.found:[])].filter(key=>q.tasks.some(t=>t.id===key));target.design=[0,1,2].includes(saved.design)?saved.design:0;for(const field of ['to','from','message'])if(typeof saved[field]==='string')target[field]=saved[field].slice(0,field==='message'?100:24);}}catch{storageOK=false;}
+  try {for(const [id,q] of Object.entries(quests)){const saved=JSON.parse(localStorage.getItem(q.key)||'null'),target=states[id];if(!saved||typeof saved!=='object')continue;target.started=saved.started===true;target.found=[...new Set(Array.isArray(saved.found)?saved.found:[])].filter(key=>q.tasks.some(t=>t.id===key));target.design=[0,1,2].includes(saved.design)?saved.design:0;for(const field of ['to','from','message'])if(typeof saved[field]==='string')target[field]=saved[field].slice(0,field==='message'?100:24);if(target.from==='一位丝路旅人')target.from='丝路上的胖鸭';}}catch{storageOK=false;}
   function activate(id){questId=id;quest=quests[id];state=states[id];tasks=quest.tasks;designs=quest.designs;if(!quest.images)quest.images=designs.map(d=>{const img=new Image();img.src=d.image;return img;});if(!quest.backdropImage){quest.backdropImage=new Image();quest.backdropImage.src=quest.backdrop;}images=quest.images;scenicBackdrop=quest.backdropImage;}
   activate(questId);
   const unlocked = () => tasks.every(t=>state.found.includes(t.id));
@@ -55,14 +55,10 @@
   const dialog = document.createElement('dialog');
   dialog.id='postcard-dialog'; dialog.setAttribute('aria-labelledby','postcard-heading'); document.body.append(dialog);
   dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
-  const entry = document.createElement('button');
-  entry.className='quest-entry'; entry.type='button'; entry.addEventListener('click',()=>{activate('registan');open();});
-  document.querySelector('#world .topbar').append(entry);
-  const sceneEntry = entry.cloneNode();sceneEntry.addEventListener('click',()=>open());
+  const sceneEntry = document.createElement('button');sceneEntry.className='quest-entry';sceneEntry.type='button';sceneEntry.addEventListener('click',()=>open());
   document.querySelector('#city .citybar-actions').prepend(sceneEntry);
   function updateScene(name){
     if(name==='plaza')activate('registan');else if(name==='bibi')activate('bibi');
-    entry.textContent=`景点明信片 · ${states.registan.found.length+states.bibi.found.length}/6`;
     sceneEntry.textContent=unlocked()?'我的明信片':'寻宝拼图 · '+state.found.length+'/3';
     sceneEntry.hidden=!['plaza','bibi'].includes(name);
     document.querySelectorAll('#scene-hotspots [data-story]').forEach(b=>{
@@ -349,7 +345,7 @@
     c.fillStyle=ink;c.font='22px sans-serif';wrap(c,'致 '+(state.to.trim()||'亲爱的朋友'),580,249,376,29);
     c.strokeStyle='#27486425';c.lineWidth=1;for(let y=317;y<=479;y+=27){c.beginPath();c.moveTo(580,y);c.lineTo(958,y);c.stroke();}
     c.fillStyle=d.color;c.font='24px "Kaiti SC","STKaiti",serif';wrap(c,state.message.replace(/\s+/gu,' ').trim()||d.blessing,580,310,376,27);
-    c.fillStyle=ink;c.font='21px sans-serif';wrap(c,'FROM  '+(state.from.trim()||'一位丝路旅人'),580,532,376,27);
+    c.fillStyle=ink;c.font='21px sans-serif';wrap(c,'FROM  '+(state.from.trim()||'丝路上的胖鸭'),580,532,376,27);
   }
   async function paint(){
     const turn=++drawing; preparedFile=null;
