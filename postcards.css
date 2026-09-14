@@ -34,7 +34,7 @@
 @media(max-width:700px){#postcard-dialog{width:96vw;max-height:95dvh}.postcard-header{padding:18px}.postcard-body{padding:18px}.quest-layout,.postcard-editor{grid-template-columns:1fr;gap:22px}.quest-triptych{aspect-ratio:1.65}.quest-duck{margin-top:14px}.quest-duck img{width:72px}.postcard-preview{max-width:390px;margin:auto}.quest-entry{font-size:10px;padding:8px}.topbar{gap:8px;flex-wrap:wrap;height:auto;min-height:76px;padding-top:8px;padding-bottom:8px}.postcard-designs button small{font-size:11px}.citybar-actions{gap:5px}.citybar-actions .quest-entry{white-space:normal}.postcard-header h2{font-size:23px}#postcard-status{padding:0 18px 18px}}
 @media(prefers-reduced-motion:reduce){.puzzle-piece.is-found{animation:none}}
 
-/* Registan only: a perforated postal sheet unfolds into a picture and a letter. */
+/* A perforated postal sheet unfolds into a picture and a letter. */
 #postcard-dialog{width:min(1180px,96vw);max-width:1180px;max-height:94dvh;border-radius:0;background:#fff5dc;clip-path:polygon(0 24px,12px 24px,12px 12px,32px 12px,32px 0,calc(100% - 40px) 0,calc(100% - 40px) 8px,calc(100% - 16px) 8px,calc(100% - 16px) 24px,100% 24px,100% calc(100% - 32px),calc(100% - 12px) calc(100% - 32px),calc(100% - 12px) calc(100% - 12px),calc(100% - 32px) calc(100% - 12px),calc(100% - 32px) 100%,24px 100%,24px calc(100% - 12px),0 calc(100% - 12px));scrollbar-width:thin;scrollbar-color:#b7763d #fff5dc}
 #postcard-dialog[open]{animation:letterUnfold .6s cubic-bezier(.16,1,.3,1)}
 #postcard-dialog::backdrop{background:#061d28e8}
@@ -71,8 +71,7 @@
 .guest-note{font-size:11px;line-height:1.7;margin:11px 0 0}#postcard-dialog #quest-account{font-size:11px;min-height:32px;padding:4px 0}
 .postcard-editor{grid-template-columns:minmax(0,1.15fr) minmax(280px,1fr);gap:32px}.postcard-preview{position:sticky;top:12px;min-width:0}.postcard-preview canvas{transform:rotate(-.6deg)}
 .postcard-designs{flex-direction:row;gap:8px;margin-bottom:20px}#postcard-dialog .postcard-designs button{display:block;padding:0 0 8px;overflow:hidden;flex:1;min-width:0;border:1px solid #c8bb9b;border-radius:2px;background:#fffdf2}
-.postcard-designs button:before{display:block;width:100%;height:auto;aspect-ratio:1.5;background-size:cover;background-position:center;image-rendering:pixelated;margin-bottom:7px}
-.postcard-designs button:nth-child(1):before{background-image:url('assets/registan-postcard-blue.webp')}.postcard-designs button:nth-child(2):before{background-image:url('assets/registan-postcard-caravan.webp')}.postcard-designs button:nth-child(3):before{background-image:url('assets/registan-postcard-sunset.webp')}
+.postcard-designs button:before{display:block;width:100%;height:auto;aspect-ratio:1.5;background-image:var(--card-image);background-size:var(--card-size,cover);background-position:var(--card-position,center);image-rendering:pixelated;margin-bottom:7px}
 .postcard-designs button span{display:block;text-align:center;font-size:12px}.postcard-designs button small{display:none}
 .selfie-section{border-block:1px dashed #c8bb9b;padding:16px 0;margin-bottom:20px}.selfie-section h4{font-size:15px;margin:0 0 10px}.postcard-editor label.selfie-upload{display:flex;justify-content:space-between;align-items:center;background:#eadcc1;padding:10px 14px;border:1px dashed #936d42;color:#563f28;cursor:pointer;font-size:14px;min-height:44px;margin:0}
 #selfie-file{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.selfie-section:has(#selfie-file:focus-visible) .selfie-upload{outline:3px solid #c58b13;outline-offset:3px}
@@ -154,7 +153,7 @@
 #postcard-dialog[data-view=quest] .quest-notes ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0}
 #postcard-dialog[data-view=quest] .quest-notes li,#postcard-dialog[data-view=quest] .quest-notes li:first-child{position:relative;display:flex;align-items:flex-end;min-height:188px;padding:20px;overflow:hidden;border:1px solid #f2cf5899;border-radius:16px;background:#123d5dcc;box-shadow:0 12px 28px #07151e38;color:#fff3d5}
 #postcard-dialog[data-view=quest] .quest-notes li:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#10283af2 0,#10283a99 48%,transparent 78%);opacity:0;pointer-events:none}
-#postcard-dialog[data-view=quest] .quest-notes li.note-found{background-image:url('assets/registan-postcard-blue.webp');background-size:300% auto;background-position:calc(var(--piece)*50%) center;background-repeat:no-repeat;image-rendering:pixelated;color:#fffbe3}
+#postcard-dialog[data-view=quest] .quest-notes li.note-found{background-image:var(--quest-art);background-size:300% auto;background-position:calc(var(--piece)*50%) center;background-repeat:no-repeat;image-rendering:pixelated;color:#fffbe3}
 #postcard-dialog[data-view=quest] .quest-notes li.note-found:after{opacity:1}
 #postcard-dialog[data-view=quest] .quest-notes li>div{position:relative;z-index:1}
 #postcard-dialog[data-view=quest] .quest-notes li small{position:absolute;z-index:2;top:12px;right:12px;display:block;margin:0;padding:6px 10px;border-radius:999px;background:#f2cf58;color:#10283a;font:700 10px/1.4 var(--ui);letter-spacing:.06em;box-shadow:0 5px 14px #07151e38}
