@@ -19,9 +19,9 @@
       {id:'bibi_stand',name:'找到巨书的位置',hint:'庭院中央，有一座曾托举巨幅古兰经的石架。',question:'庭院中央的石质书架原来用来托举什么？',answers:['商人的秤','巨幅古兰经'],correct:1,reply:'不是普通书架，是一座给巨书准备的舞台。线索收好。'},
       {id:'bibi_kiss',name:'分清传说与史实',hint:'去画面右侧，听听王后、建筑师与一个吻的传说。',question:'“王后与建筑师之吻”应该怎样理解？',answers:['后世地方传说','可靠的施工档案'],correct:0,reply:'浪漫故事可以记住，但不能冒充施工记录。胖鸭批准入册。'}
     ],designs:[
-      {title:'门廊来信',subtitle:'把宏伟装进一封信。',color:'#176a78',image:'assets/bibi-khanym-postcards.png',crop:0,blessing:'愿你拥有抬头看世界的勇气，也有走进宏大之后的从容。'},
-      {title:'庭院来信',subtitle:'巨书与旅人在此相遇。',color:'#9a592f',image:'assets/bibi-khanym-postcards.png',crop:1,blessing:'愿每一次阅读，都为你打开一座比想象更大的庭院。'},
-      {title:'传说来信',subtitle:'夕阳替故事保留余温。',color:'#70435e',image:'assets/bibi-khanym-postcards.png',crop:2,blessing:'愿真实给你方向，传说给旅途留下一点温柔。'}
+      {title:'门廊来信',subtitle:'把宏伟装进一封信。',color:'#176a78',image:'assets/bibi-khanym-postcards.png',blessing:'愿你拥有抬头看世界的勇气，也有走进宏大之后的从容。'},
+      {title:'庭院来信',subtitle:'巨书与旅人在此相遇。',color:'#9a592f',image:'assets/bibi-khanym-postcards.png',blessing:'愿每一次阅读，都为你打开一座比想象更大的庭院。'},
+      {title:'传说来信',subtitle:'夕阳替故事保留余温。',color:'#70435e',image:'assets/bibi-khanym-postcards.png',blessing:'愿真实给你方向，传说给旅途留下一点温柔。'}
     ]}
   };
   const makeState=q=>({started:false,found:[],design:0,to:'亲爱的朋友',from:'一位丝路旅人',message:q.designs[0].blessing});
@@ -74,6 +74,7 @@
     closeModal();
     const editing=editor && unlocked();
     dialog.dataset.view=editing?'editor':'quest';
+    dialog.dataset.quest=questId;
     dialog.style.setProperty('--quest-art',`url('${quest.art}')`);dialog.innerHTML=`<!-- THESIS: An unfolding pixel postcard, not a dashboard. OWN-WORLD: lapis, apricot, cream postal paper and stepped edges. STORY: follow three clues, restore a smiling souvenir, write to a friend. --><header class="postcard-header"><div><h2 id="postcard-heading">${editing?'把这一刻，寄给你。':'寻找城市碎片，获取独家记忆'}</h2><p>${editing?'选一款，写祝福。也可以加入自己的照片。':`跟着线索，在${quest.placeFull}找找看。`}</p></div>${editing?`<div class="postal-stamp" aria-hidden="true">${mark(2)}<small>SAMARKAND</small></div>`:''}<button type="button" class="postcard-close" aria-label="关闭明信片窗口">×</button></header><div class="postcard-body"></div><p id="postcard-status" role="status" aria-live="polite"></p>`;
     dialog.querySelector('.postcard-close').onclick=()=>dialog.close();
     if(editor && unlocked()) renderEditor();else renderQuest();
@@ -364,7 +365,7 @@
       c.imageSmoothingEnabled=false;cover(c,scenicBackdrop,0,0,1080,1350);c.fillStyle='#1632491a';c.fillRect(0,0,1080,1350);
       correspondence(c,d);
       paper(c,66,660,948,644);
-      // A Bibi-Khanym asset is a three-panel sprite; each design exports one intact panel.
+      // Quest cards reveal thirds; the finished postcard restores the complete selfie.
       if(d.crop==null)c.drawImage(image,82,676,916,610.67);
       else{const sw=image.naturalWidth/3;c.drawImage(image,sw*d.crop,0,sw,image.naturalHeight,82,676,916,610.67);}
       if(personal)drawPortraits(c,assets,design,82,676,916,610.67);
